@@ -32,11 +32,12 @@ form.addEventListener("submit", async (event) => {
   try {
     //Visar textcontent "Söker..." 
     searchStatus.textContent = "Söker...";
-    //Tömmer listan med städer
-    cityList.innerHTML = "<li>Stockholm</li>";
+    //Tömmer listan med städer (Eftersom att det är en tom sträng som ersätter innehållet)
+    cityList.innerHTML = "";
 
     const cities = await searchCities(input.value);
-    if (input.value > 0) {
+
+    if (cities.length > 0) {
       renderCities med showWeather som onSelect
 }
     }
