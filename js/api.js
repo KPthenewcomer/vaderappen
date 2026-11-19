@@ -1,14 +1,30 @@
 // api.js: allt som pratar med Open-Meteo. Ingen DOM här.
 
-const GEO_URL = 'https://geocoding-api.open-meteo.com/v1/search';
-const WEATHER_URL = 'https://api.open-meteo.com/v1/forecast';
+const GEO_URL = "https://geocoding-api.open-meteo.com/v1/search";
+const WEATHER_URL = "https://api.open-meteo.com/v1/forecast";
 
 // Steg 1
 // TODO: Skriv fetchJson(url, options). Den ska skicka med options till fetch,
 //       kasta new Error(`HTTP ${response.status}`) om svaret inte är ok, och annars returnera JSON:en.
 export const fetchJson = async (url, options) => {
   // TODO
+  try {
+    //Skapar en variable som heter res
+    //Den invänväntar fetch från url
+    const res = await fetch(url, options);
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error("Kunde inte hämta:", error);
+    throw error;
+  }
 };
+
+fetchJson();
 
 // Steg 2
 // TODO: Skriv searchCities(name, signal).
