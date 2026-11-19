@@ -32,7 +32,16 @@ export const fetchJson = async (url, options) => {
 //       Hittas inget ska du returnera en tom array.
 export const searchCities = async (name, signal) => {
   const url = `${GEO_URL}?name=${encodeURIComponent(name)}&count=8&language=sv`;
-  console.log(url);
+  const data = await fetchJson(url, { signal });
+  const results = data.results ?? [];
+  return results.map((city) => ({
+    id: city.id,
+    name: city.name,
+    region: city.admin1,
+    country: city.country,
+    latitude: city.latitude,
+    longitude: city.longitude,
+  }));
 };
 
 // Steg 4
