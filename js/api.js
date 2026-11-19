@@ -24,8 +24,6 @@ export const fetchJson = async (url, options) => {
   }
 };
 
-fetchJson();
-
 // Steg 2
 // TODO: Skriv searchCities(name, signal).
 //       URL: `${GEO_URL}?name=${encodeURIComponent(name)}&count=8&language=sv`
@@ -33,7 +31,8 @@ fetchJson();
 //       Returnera en array med { id, name, region, country, latitude, longitude }.
 //       Hittas inget ska du returnera en tom array.
 export const searchCities = async (name, signal) => {
-  // TODO
+  const url = `${GEO_URL}?name=${encodeURIComponent(name)}&count=8&language=sv`;
+  console.log(url);
 };
 
 // Steg 4
